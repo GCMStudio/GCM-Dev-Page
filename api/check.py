@@ -3,7 +3,7 @@ from pathlib import Path
 
 def handler(request):
     try:
-        body = request.get_json()
+        body = request.get_json() or {}
         current_version = body.get("version", "0.0.0")
 
         with open(
@@ -20,7 +20,15 @@ def handler(request):
                 "currentVersion": current_version,
                 "latestVersion": latest,
                 "needsUpdate": current_version != latest,
-                "downloadUrl": config["downloadUrl"]
+
+                # Download
+                "downloadUrl": config["downloadUrl"],
+
+                # Informações extras
+                "minimumVersion": config.get("minimumVersion"),
+                "releaseDate": config.get("releaseDate"),
+                "build": config.get("build", 0),
+                "changelog": config.get("changelog", [])
             }
         }
 

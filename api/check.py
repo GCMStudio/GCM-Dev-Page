@@ -7,7 +7,7 @@ def handler(request):
         current_version = body.get("version", "0.0.0")
 
         with open(
-            Path(__file__).parent.parent / "versions.json",
+            Path(__file__).parent / "versions.json",
             encoding="utf-8"
         ) as f:
             config = json.load(f)

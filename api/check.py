@@ -13,6 +13,7 @@ def handler(request):
             config = json.load(f)
 
         latest = config["latest"]
+        latest_info = config["versions"][latest]
 
         return {
             "statusCode": 200,
@@ -21,14 +22,11 @@ def handler(request):
                 "latestVersion": latest,
                 "needsUpdate": current_version != latest,
 
-                # Download
-                "downloadUrl": config["downloadUrl"],
-
-                # Informações extras
-                "minimumVersion": config.get("minimumVersion"),
-                "releaseDate": config.get("releaseDate"),
-                "build": config.get("build", 0),
-                "changelog": config.get("changelog", [])
+                "downloadUrl": latest_info["downloadUrl"],
+                "minimumVersion": latest_info["minimumVersion"],
+                "releaseDate": latest_info["releaseDate"],
+                "build": latest_info["build"],
+                "changelog": latest_info["changelog"]
             }
         }
 

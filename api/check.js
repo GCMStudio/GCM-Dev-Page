@@ -13,10 +13,10 @@ export default function handler(req, res) {
         const latestInfo = config.versions[latest];
 
         return res.status(200).json({
-            currentVersion,
             latestVersion: latest,
             needsUpdate: currentVersion !== latest,
             downloadUrl: latestInfo.downloadUrl,
+            severity: latestInfo.severity,
             minimumVersion: latestInfo.minimumVersion,
             releaseDate: latestInfo.releaseDate,
             build: latestInfo.build,

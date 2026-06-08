@@ -8,8 +8,7 @@
             "releaseDate": "2026-06-02",
 
             "changelog": [
-                "First public version of Spectra Anti-Cheat",
-                "All code works, but is not suitable for public games"
+                "First public version of Spectra Anti-Cheat. All code works, but is not suitable for public games."
             ],
 
             "downloadUrl": "https://raw.githubusercontent.com/GCMStudio/SpectraVersions/main/versions/beta_1.0.rbxmx"

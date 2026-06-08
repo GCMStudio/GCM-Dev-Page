@@ -6,7 +6,7 @@
             "minimumVersion": "beta_1.0",
             "build": 100,
             "releaseDate": "2026-06-02",
-            "severity": "normal",
+            "severity": "none",
 
             "changelog": [
                 "First public version of Spectra Anti-Cheat. All code works, but is not suitable for public games."

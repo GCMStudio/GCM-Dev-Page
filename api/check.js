@@ -3,11 +3,20 @@ import path from "path";
 
 export default function handler(req, res) {
     try {
-        const currentVersion = req.body?.version || "0.0.0";
+        const currentVersion =
+            req.query.current ||
+            req.query.version ||
+            "0.0.0";
 
-        const filePath = path.join(process.cwd(), "data", "versions.json");
+        const filePath = path.join(
+            process.cwd(),
+            "data",
+            "versions.json"
+        );
 
-        const config = JSON.parse(fs.readFileSync(filePath, "utf8"));
+        const config = JSON.parse(
+            fs.readFileSync(filePath, "utf8")
+        );
 
         const latest = config.latest;
         const latestInfo = config.versions[latest];
@@ -22,9 +31,12 @@ export default function handler(req, res) {
             build: latestInfo.build,
             changelog: latestInfo.changelog
         });
+
     } catch (err) {
+
         return res.status(500).json({
             error: err.message
         });
+
     }
 }
